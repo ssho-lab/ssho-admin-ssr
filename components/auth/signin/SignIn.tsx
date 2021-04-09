@@ -6,38 +6,39 @@ import {useRecoilState} from "recoil";
 import {signinState} from "../../../stores/auth/states";
 import axios from 'axios';
 
-interface SignInProps {}
+interface SignInProps {
+}
 
-const SignIn = ({}:SignInProps) => {
+const SignIn = ({}: SignInProps) => {
 
     const router = useRouter();
     const [signinReq, setSigninReq] = useRecoilState(signinState);
 
     useEffect(() => {
         if (sessionStorage.getItem('name') != null) {
-            router.push('/item');
+            router.push('/dashboard/item');
         }
     }, []);
+
+    const saveSessionItems = (data: any) => {
+        const {token, name, admin} = data
+
+        sessionStorage.setItem('token', token)
+        sessionStorage.setItem('name', name)
+        sessionStorage.setItem('admin', admin)
+    }
 
     const handleLogin = (adminLogin: boolean) => {
 
         axios.post('/api/auth/signin', signinReq).then((response) => {
             if (response.data !== null && response.data.token !== "") {
 
-                const {token, name, admin} = response.data
+                saveSessionItems(response.data);
 
-                // sessionStorage.setItem('token', token)
-                // sessionStorage.setItem('name', name)
-                // sessionStorage.setItem('admin', admin)
-
-                if (adminLogin) {
-                    if (admin) {
-                        //router.push('/admin')
-                    } else {
-                        message.error('관리자가 아닙니다.');
-                    }
+                if (sessionStorage.getItem('admin')) {
+                    router.push('/dashboard/item')
                 } else {
-                    //router.push("/item")
+                    message.error('관리자가 아닙니다.');
                 }
             }
         }).catch(function (error) {
@@ -71,20 +72,10 @@ const SignIn = ({}:SignInProps) => {
                 </Row>
                 <Row>
                     <Col span={8} offset={8}>
-                        <Row>
-                            <Col span={10} offset={0}>
-                                <Button style={{width: '100%'}} onClick={() => handleLogin(false)}
-                                        type="primary">
-                                    로그인
-                                </Button>
-                            </Col>
-                            <Col span={10} offset={4}>
-                                <Button style={{width: '100%'}} onClick={() => handleLogin(true)}
-                                        type="primary">
-                                    관리자 로그인
-                                </Button>
-                            </Col>
-                        </Row>
+                        <Button style={{width: '100%'}} onClick={() => handleLogin(false)}
+                                type="primary">
+                            로그인
+                        </Button>
                     </Col>
                 </Row>
                 <Row id='auth-signup-btn-row'>
