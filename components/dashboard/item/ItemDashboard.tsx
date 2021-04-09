@@ -38,6 +38,8 @@ const ItemDashboard = ({itemData, mallData}: ItemDashboardProps) => {
         setItemList(itemData);
         setMallList(mallData);
 
+        console.log(router.asPath);
+
     }, [])
 
     const countCategoryItem = (itemList: any[], targetCatCd: string) => {
@@ -49,7 +51,7 @@ const ItemDashboard = ({itemData, mallData}: ItemDashboardProps) => {
 
     return (
         <Layout>
-            <DashboardMenu/>
+            <DashboardMenu path={router.asPath}/>
             <Layout className="site-layout" style={{marginLeft: 200, height: "100vh"}}>
                 <Header className="site-layout-background" style={{padding: 0}}/>
                 <Content style={{margin: '24px 0 0', overflow: 'initial', height: "100vh"}}>
