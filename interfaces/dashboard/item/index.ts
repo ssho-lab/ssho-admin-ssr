@@ -19,7 +19,8 @@ export type Tag = {
     name: string,
     description: string,
     imageUrl: string,
-    repVec: number[]
+    repVec: number[],
+    active: boolean
 }
 
 export type Mall = {

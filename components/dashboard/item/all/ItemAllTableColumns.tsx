@@ -1,10 +1,10 @@
-import {Button, Layout} from "antd";
+import {Button, Layout, Tag as TagComp} from "antd";
 import NumberFormat from 'react-number-format';
-import {Category} from '../../../interfaces/dashboard/item';
+import {Category, Tag} from '../../../../interfaces/dashboard/item';
 
 const {Header, Content, Sider} = Layout;
 
-export const ItemTableColumns = (itemList, mallList) => {
+export const ItemAllTableColumns = (itemList, mallList) => {
     return (
         [
             {
@@ -54,13 +54,12 @@ export const ItemTableColumns = (itemList, mallList) => {
                 width: 100,
                 render: (title: string) => <span style={{fontSize: "10px"}}>{title}</span>
             },
-            // {
-            //     title: '태그 리스트',
-            //     dataIndex: 'tagList',
-            //     width: 220,
-            //     render: (tagList: Tag[], record: any) => <TagList itemId={record.id} tagListPerItem={tagList}
-            //                                                       allTagList={allTagList}/>,
-            // },
+            {
+                title: '태그 리스트',
+                dataIndex: 'tagList',
+                width: 220,
+                render: (tagList: Tag[], record: any) => tagList.map(tag => <TagComp color="purple">{tag.name}</TagComp>),
+            },
             {
                 title: '가격',
                 dataIndex: 'price',
@@ -77,16 +76,6 @@ export const ItemTableColumns = (itemList, mallList) => {
                 width: 150,
                 render: (imageUrl: string) => <img style={{width: 100, height: "auto"}} src={imageUrl}></img>,
             },
-            /*
-            {
-                title: '노출 횟수',
-                dataIndex: 'showCount',
-                width: 100,
-                render: (showCount: number) => <span style={{fontSize: '10px'}}>{showCount}</span>,
-                sorter: (a: any, b: any) => b.showCount-a.showCount,
-            },
-
-             */
             {
                 title: '상품 상세',
                 dataIndex: 'link',

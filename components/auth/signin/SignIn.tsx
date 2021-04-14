@@ -16,7 +16,7 @@ const SignIn = ({}: SignInProps) => {
 
     useEffect(() => {
         if (sessionStorage.getItem('name') != null) {
-            router.push('/dashboard/item');
+            router.push('/dashboard/item/all');
         }
     }, []);
 
@@ -36,7 +36,7 @@ const SignIn = ({}: SignInProps) => {
                 saveSessionItems(response.data);
 
                 if (sessionStorage.getItem('admin')) {
-                    router.push('/dashboard/item')
+                    router.push('/dashboard/item/all')
                 } else {
                     message.error('관리자가 아닙니다.');
                 }

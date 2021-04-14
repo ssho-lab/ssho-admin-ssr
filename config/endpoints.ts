@@ -1,8 +1,5 @@
-const API_ENDPOINTS = {
-    ITEM_API: 'http://api.ssho.tech:8081',
-    LOG_API: 'http://api.ssho.tech:8082',
-    TAG_API: 'http://3.35.129.79:8080',
+export const API_ENDPOINTS = {
     CORE_API: 'http://api.ssho.tech:8080',
+    LOG_API: 'http://api.ssho.tech:8082',
+    NEXT: 'http://127.0.0.1:3000'
 }
-
-export default API_ENDPOINTS

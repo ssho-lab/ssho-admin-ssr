@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
 import {Descriptions, Layout, Table} from "antd";
 import {useRouter} from 'next/router';
-import {itemListState} from "../../../stores/dahsboard/item/states";
-import {mallListState} from "../../../stores/dahsboard/mall/states";
+import {itemListState} from "../../../../stores/dahsboard/item/states";
+import {mallListState} from "../../../../stores/dahsboard/mall/states";
 
 import {useRecoilState} from "recoil";
 // import TagList from './TagList';
-import {Category, Item, Mall} from '../../../interfaces/dashboard/item';
-import {DashboardMenu} from '../common/DashboardMenu';
-import {ItemTableColumns} from './ItemTableColumns';
+import {Category, Item, Mall} from '../../../../interfaces/dashboard/item';
+import {DashboardMenu} from '../../common/DashboardMenu';
+import {ItemAllTableColumns} from './ItemAllTableColumns';
 
 const {Header, Content, Sider} = Layout;
 
@@ -17,7 +17,7 @@ interface ItemDashboardProps {
     mallData: Mall[]
 }
 
-const ItemDashboard = ({itemData, mallData}: ItemDashboardProps) => {
+const ItemAllDashboard = ({itemData, mallData}: ItemDashboardProps) => {
 
     const router = useRouter();
 
@@ -37,8 +37,6 @@ const ItemDashboard = ({itemData, mallData}: ItemDashboardProps) => {
 
         setItemList(itemData);
         setMallList(mallData);
-
-        console.log(router.asPath);
 
     }, [])
 
@@ -80,7 +78,7 @@ const ItemDashboard = ({itemData, mallData}: ItemDashboardProps) => {
                                         label="EXTRA">{countCategoryItem(itemList, 'EXTRA')}</Descriptions.Item>
                                 </Descriptions>
                             </div>}
-                            <Table columns={ItemTableColumns(itemList, itemList)} rowKey={record => record.id}
+                            <Table columns={ItemAllTableColumns(itemList, mallList)} rowKey={record => record.id}
                                    dataSource={itemList}
                                    pagination={{pageSize: 50}} scroll={{y: 400}}/>
                         </div>
@@ -91,4 +89,4 @@ const ItemDashboard = ({itemData, mallData}: ItemDashboardProps) => {
     )
 }
 
-export default ItemDashboard;
+export default ItemAllDashboard;
