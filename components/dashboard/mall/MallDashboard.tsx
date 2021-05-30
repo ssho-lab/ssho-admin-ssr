@@ -37,7 +37,7 @@ const MallDashboard = ({mallData}: MallDashboardProps) => {
     return (
         <Layout>
             <DashboardMenu path={router.asPath}/>
-            <Layout className="site-layout" style={{marginLeft: 200, height: "100vh"}}>
+            <Layout className="site-layout" style={{marginLeft: 200}}>
                 <Header className="site-layout-background" style={{padding: 0}}/>
                 <Content style={{margin: '24px 0 0', overflow: 'initial', height: "100vh"}}>
                     <div className="site-layout-background" style={{padding: 24, textAlign: 'center'}}>

@@ -35,3 +35,10 @@ yarn-error.log*
 
 .idea
 yarn.lock
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.env

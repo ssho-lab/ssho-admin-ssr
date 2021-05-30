@@ -52,7 +52,7 @@ const ItemMallDashboard = ({itemData, mallData}: ItemDashboardProps) => {
     return (
         <Layout>
             <DashboardMenu path={router.asPath}/>
-            <Layout className="site-layout" style={{marginLeft: 200, height: "100vh"}}>
+            <Layout className="site-layout" style={{marginLeft: 200}}>
                 <Header className="site-layout-background" style={{padding: 0}}/>
                 <Content style={{margin: '24px 0 0', overflow: 'initial', height: "100vh"}}>
                     <div className="site-layout-background" style={{padding: 24, textAlign: 'center'}}>
@@ -69,7 +69,7 @@ const ItemMallDashboard = ({itemData, mallData}: ItemDashboardProps) => {
                                 <Descriptions.Item label="상품개수">{mallItemList.length}</Descriptions.Item>
                             </Descriptions>
                         </div>}
-                        {mallItemList.length !== 0 && <Table columns={ItemMallTableColumns(itemList, mallList)} rowKey={record => record.id} dataSource={mallItemList} pagination={{ pageSize: 50 }} scroll={{ y: 320 }} />}
+                        {mallItemList.length !== 0 && <Table columns={ItemMallTableColumns(itemList, mallList)} rowKey={record => record.id} dataSource={mallItemList} pagination={{ pageSize: 50 }} scroll={{ y: 400 }} />}
                     </div>
                 </Content>
             </Layout>

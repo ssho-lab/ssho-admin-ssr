@@ -38,6 +38,9 @@ export const DashboardMenu = ({path}) => {
             case '/dashboard/mall':
                 setMenuSeq('4-0')
                 break;
+            case '/dashboard/fashtest':
+                setMenuSeq('5-0')
+                break;
             default:
                 break;
         }
@@ -103,10 +106,18 @@ export const DashboardMenu = ({path}) => {
                             몰
                         </Menu.Item>
                     </SubMenu>
+                    <SubMenu key="5" icon={<UserOutlined/>} title="패션 테스트">
+                        <Menu.Item onClick={() => {
+                            setMenuSeq('5-0');
+                            router.push("/dashboard/fashtest");
+                        }} key="5-0" icon={<UserOutlined/>}>
+                            패션 테스트
+                        </Menu.Item>
+                    </SubMenu>
                     <Menu.Item onClick={() => {
                         sessionStorage.clear()
                         router.push("/")
-                    }} key="5-0" icon={<UserOutlined/>}>
+                    }} key="6-0" icon={<UserOutlined/>}>
                         로그아웃
                     </Menu.Item>
                 </Menu>

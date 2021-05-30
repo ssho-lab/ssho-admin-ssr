@@ -36,10 +36,10 @@ const TagDashboard = ({tagData}: TagDashboardProps) => {
     return (
         <Layout>
             <DashboardMenu path={router.asPath}/>
-            <Layout className="site-layout" style={{marginLeft: 200, height: "100vh"}}>
+            <Layout className="site-layout" style={{marginLeft: 200}}>
                 <Header className="site-layout-background" style={{padding: 0}}/>
-                <Content style={{margin: '24px 0 0', overflow: 'initial', height: "100vh"}}>
-                    <div className="site-layout-background" style={{padding: 24, textAlign: 'center'}}>
+                <Content style={{margin: '24px 0 0', overflow: 'initial', height: "100%"}}>
+                    <div className="site-layout-background" style={{padding: 24, textAlign: 'center', height: '100%'}}>
                         <div>
                             <div style={{marginBottom: 40, border: '1px solid black'}} >
                                 <Descriptions layout="vertical" bordered size="small" column={{ xxl: 5, xl: 5, lg: 5, md: 3, sm: 2, xs: 1 }}>
@@ -49,7 +49,7 @@ const TagDashboard = ({tagData}: TagDashboardProps) => {
                             </div>
                             <Table columns={TagTableColumns(tagList)} rowKey={record => record.id}
                                    dataSource={tagList}
-                                   pagination={{pageSize: 50}} scroll={{y: 400}}/>
+                                   pagination={{pageSize: 50}} scroll={{ y: 400 }}/>
                         </div>
                     </div>
                 </Content>

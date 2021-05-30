@@ -3,19 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "next dev -p 8080",
+    "start": "next start -p 8080",
+    "build": "npm run clean && next build",
+    "clean": "rmdir /s .next",
+    "deploy": "npm install && npm run build && eb deploy ssho-admin-ssr-real"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^7.12.0",
     "@types/lodash": "^4.14.168",
     "antd": "^4.14.1",
     "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "gray-matter": "^4.0.2",
     "next": "10.0.8",
     "nprogress": "^0.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-google-charts": "^3.0.15",
     "react-number-format": "^4.5.3",
     "recoil": "^0.1.3"
   },
